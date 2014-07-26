@@ -78,5 +78,12 @@
 	//content.appendChild(picGallery.overview());
 	//console.log(picGallery.getJsonByName());
 	//console.log(picGallery.getJsonByPath());
-	console.log(picGallery.verification());
+	//console.log(picGallery.verification());
+	console.log(picGallery.getJsonStr());
+	console.log("------------------------");
+	console.log(picGallery2.getJsonStr());
+	console.log("******************change context**************************");
+	console.log(picGallery.getJsonStr.call(picGallery2));
+	console.log("------------------------");
+	console.log(picGallery2.getJsonStr.call(picGallery));
 })();
