@@ -48,4 +48,26 @@
 	picGallery.readJsonStr(jsonStr);
 	picGallery2.readJsonStr(jsonStr2);
 
+	/*
+	picGallery.addImage({
+							name:"w",
+							path:"",
+							description:"d",
+							date:new Date()
+						});
+	
+	*/
+
+
+	//picGallery.deleteImage(3);
+	/*
+	picGallery.editImage(1, {
+							name:"1",
+							path:"d",
+							description:"d",
+							date:new Date()
+						});
+	*/
+	content.appendChild(picGallery.overview());
+	//content.appendChild(picGallery.view(2));
 })();
