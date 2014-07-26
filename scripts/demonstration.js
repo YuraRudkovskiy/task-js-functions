@@ -75,7 +75,8 @@
 
 	//picGallery.filter("name", "giraffe");
 
-	content.appendChild(picGallery.overview());
+	//content.appendChild(picGallery.overview());
+	console.log(picGallery.getJsonByName());
 
 })();
 

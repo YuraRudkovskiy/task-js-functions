@@ -80,9 +80,16 @@
 				this.storage.images = this.storage.images.filter(function(element){
 					return element[field] === value;
 				});
-		    }
+		    },
 		    /*5*/
-
+		    getJsonByName: function(){
+				this.storage.images.forEach(function(element){
+					element.toJSON = function() {
+						return this.name;
+					};
+				});
+				return JSON.stringify(this.storage);
+		    }
 		    /*6*/
 
 	    };
