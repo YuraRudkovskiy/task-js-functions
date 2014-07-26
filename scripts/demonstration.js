@@ -73,7 +73,8 @@
 
 	//picGallery.sort("description");
 
-	
+	//picGallery.filter("name", "giraffe");
+
 	content.appendChild(picGallery.overview());
 
 })();

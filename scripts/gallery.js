@@ -74,9 +74,13 @@
 							return 0;
 						});
 				}
-			}
+			},
 			/*4*/
-
+			filter: function(field, value){
+				this.storage.images = this.storage.images.filter(function(element){
+					return element[field] === value;
+				});
+		    }
 		    /*5*/
 
 		    /*6*/
