@@ -77,6 +77,6 @@
 
 	//content.appendChild(picGallery.overview());
 	//console.log(picGallery.getJsonByName());
-	console.log(picGallery.getJsonByPath());
+	//console.log(picGallery.getJsonByPath());
+	console.log(picGallery.verification());
 })();
-

@@ -99,9 +99,13 @@
 					};
 				});
 				return JSON.stringify(this.storage);
-		    }
+		    },
 		    /*6*/
-
+		    verification: function (){
+				return this.storage.images.every(function(element){
+					return element.description !== "";
+				});
+		    }
 	    };
 	};
 
