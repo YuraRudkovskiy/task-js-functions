@@ -4,7 +4,7 @@
 	var picGallery = gallery(),
 		picGallery2 = gallery(),
 		content = document.getElementById("content"),
-		structure = "{\
+		jsonStr = "{\
 						\"images\": [\
 							{\
 								\"name\": \"cat\",\
@@ -32,7 +32,7 @@
 							}\
 						]\
 					}",
-		structure2 = "{\
+		jsonStr2 = "{\
 						\"images\": [\
 							{\
 								\"name\": \"dinosaur\",\
@@ -43,6 +43,9 @@
 						]\
 					}";
 
-		console.log("This is a demonstration");
+	//console.log(picGallery);
+
+	picGallery.readJsonStr(jsonStr);
+	picGallery2.readJsonStr(jsonStr2);
 
 })();
