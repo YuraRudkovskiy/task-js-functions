@@ -89,6 +89,16 @@
 					};
 				});
 				return JSON.stringify(this.storage);
+		    },
+		    getJsonByPath: function (){
+				this.storage.images.forEach(function(element){
+					element.toJSON = function() {
+						if(this.path !== ""){
+							return this;
+						}
+					};
+				});
+				return JSON.stringify(this.storage);
 		    }
 		    /*6*/
 
