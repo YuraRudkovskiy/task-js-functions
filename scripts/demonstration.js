@@ -68,6 +68,13 @@
 							date:new Date()
 						});
 	*/
-	content.appendChild(picGallery.overview());
+	//content.appendChild(picGallery.overview());
 	//content.appendChild(picGallery.view(2));
+
+	//picGallery.sort("description");
+
+	
+	content.appendChild(picGallery.overview());
+
 })();
+

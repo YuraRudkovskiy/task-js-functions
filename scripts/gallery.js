@@ -61,9 +61,20 @@
 				/*
 					console.log(this.storage.images[id]);
 				*/
-		    }
+		    },
 		    /*3*/
-
+		    sort: function (field){
+				if(this.storage){
+					this.storage.images.sort(function(a, b){
+						if(a[field] > b[field]){
+							return 1;
+						}else if(a[field] < b[field]){
+							return -1;
+						}
+							return 0;
+						});
+				}
+			}
 			/*4*/
 
 		    /*5*/
