@@ -5,9 +5,9 @@
 		var Gallery = {};
 	    
 	    /*0*/
-	    Gallery.storage = null;
+	    Gallery.Storage = null;
 	    Gallery.readJsonStr = function(str){
-			this.storage = JSON.parse(str, function(key, value){
+			this.Storage = JSON.parse(str, function(key, value){
 				if(key === "date"){
 					return new Date(value);
 				}
@@ -16,33 +16,33 @@
 		};
 
 		Gallery.getJsonStr = function(){
-			return JSON.stringify(this.storage);
+			return JSON.stringify(this.Storage);
 		};
 		/*1*/
 		Gallery.addImage = function(obj){
-			if(!this.storage){
-				this.storage = {
+			if(!this.Storage){
+				this.Storage = {
 					images:[]
 				}
 			}
-			this.storage.images.push(obj);
+			this.Storage.images.push(obj);
 		};
 
 		Gallery.editImage = function(id, obj){
-			if(this.storage && this.storage.images[id]){
-				this.storage.images[id] = obj;
+			if(this.Storage && this.Storage.images[id]){
+				this.Storage.images[id] = obj;
 			}
 		};
 
 		Gallery.deleteImage = function(id){
-			if(this.storage && this.storage.images[id]){
-				this.storage.images.splice(id, 1);
+			if(this.Storage && this.Storage.images[id]){
+				this.Storage.images.splice(id, 1);
 			}
 		};
 		/*2*/
 		Gallery.overview = function (){
 			var pre = document.createElement("pre");
-			pre.innerText = JSON.stringify(this.storage,  function(key, value){
+			pre.innerText = JSON.stringify(this.Storage,  function(key, value){
 					if( !isNaN( parseInt(key) ) && value){
 						value.id = parseInt(key);
 					}
@@ -50,22 +50,22 @@
 				}, " ");
 			return pre;
 			/*
-				console.log(this.storage);
+				console.log(this.Storage);
 			*/
 		};
 
 		Gallery.view = function (id){
 			var pre = document.createElement("pre");
-			pre.innerText = JSON.stringify(this.storage.images[id], null, " ");
+			pre.innerText = JSON.stringify(this.Storage.images[id], null, " ");
 			return pre;
 			/*
-				console.log(this.storage.images[id]);
+				console.log(this.Storage.images[id]);
 			*/
 		};
 		/*3*/
 		Gallery.sort = function (field){
-			if(this.storage){
-				this.storage.images.sort(function(a, b){
+			if(this.Storage){
+				this.Storage.images.sort(function(a, b){
 					if(a[field] > b[field]){
 						return 1;
 					}else if(a[field] < b[field]){
@@ -77,32 +77,32 @@
 		};
 		/*4*/
 		Gallery.filter = function(field, value){
-			this.storage.images = this.storage.images.filter(function(element){
+			this.Storage.images = this.Storage.images.filter(function(element){
 				return element[field] === value;
 			});
 		};
 		/*5*/
 		Gallery.getJsonByName = function(){
-			this.storage.images.forEach(function(element){
+			this.Storage.images.forEach(function(element){
 				element.toJSON = function() {
 					return this.name;
 				};
 			});
-			return JSON.stringify(this.storage);
+			return JSON.stringify(this.Storage);
 		};
 		Gallery.getJsonByPath = function (){
-			this.storage.images.forEach(function(element){
+			this.Storage.images.forEach(function(element){
 				element.toJSON = function() {
 					if(this.path !== ""){
 						return this;
 					}
 				};
 			});
-			return JSON.stringify(this.storage);
+			return JSON.stringify(this.Storage);
 		};
 		/*6*/
 		Gallery.verification = function (){
-			return this.storage.images.every(function(element){
+			return this.Storage.images.every(function(element){
 				return element.description !== "";
 			});
 		};
