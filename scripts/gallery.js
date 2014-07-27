@@ -2,11 +2,11 @@
 	"use strict"
 
 	window.gallery = function () {
-		var galleryObj = {};
+		var Gallery = {};
 	    
 	    /*0*/
-	    galleryObj.storage = null;
-	    galleryObj.readJsonStr = function(str){
+	    Gallery.storage = null;
+	    Gallery.readJsonStr = function(str){
 			this.storage = JSON.parse(str, function(key, value){
 				if(key === "date"){
 					return new Date(value);
@@ -15,11 +15,11 @@
 			});
 		};
 
-		galleryObj.getJsonStr = function(){
+		Gallery.getJsonStr = function(){
 			return JSON.stringify(this.storage);
 		};
 		/*1*/
-		galleryObj.addImage = function(obj){
+		Gallery.addImage = function(obj){
 			if(!this.storage){
 				this.storage = {
 					images:[]
@@ -28,19 +28,19 @@
 			this.storage.images.push(obj);
 		};
 
-		galleryObj.editImage = function(id, obj){
+		Gallery.editImage = function(id, obj){
 			if(this.storage && this.storage.images[id]){
 				this.storage.images[id] = obj;
 			}
 		};
 
-		galleryObj.deleteImage = function(id){
+		Gallery.deleteImage = function(id){
 			if(this.storage && this.storage.images[id]){
 				this.storage.images.splice(id, 1);
 			}
 		};
 		/*2*/
-		galleryObj.overview = function (){
+		Gallery.overview = function (){
 			var pre = document.createElement("pre");
 			pre.innerText = JSON.stringify(this.storage,  function(key, value){
 					if( !isNaN( parseInt(key) ) && value){
@@ -50,11 +50,11 @@
 				}, " ");
 			return pre;
 			/*
-				если не извращаться, то просто console.log(this.storage);
+				console.log(this.storage);
 			*/
 		};
 
-		galleryObj.view = function (id){
+		Gallery.view = function (id){
 			var pre = document.createElement("pre");
 			pre.innerText = JSON.stringify(this.storage.images[id], null, " ");
 			return pre;
@@ -63,7 +63,7 @@
 			*/
 		};
 		/*3*/
-		galleryObj.sort = function (field){
+		Gallery.sort = function (field){
 			if(this.storage){
 				this.storage.images.sort(function(a, b){
 					if(a[field] > b[field]){
@@ -71,18 +71,18 @@
 					}else if(a[field] < b[field]){
 						return -1;
 					}
-						return 0;
-					});
-				}
+					return 0;
+				});
+			}
 		};
 		/*4*/
-		galleryObj.filter = function(field, value){
+		Gallery.filter = function(field, value){
 			this.storage.images = this.storage.images.filter(function(element){
 				return element[field] === value;
 			});
 		};
 		/*5*/
-		galleryObj.getJsonByName = function(){
+		Gallery.getJsonByName = function(){
 			this.storage.images.forEach(function(element){
 				element.toJSON = function() {
 					return this.name;
@@ -90,7 +90,7 @@
 			});
 			return JSON.stringify(this.storage);
 		};
-		galleryObj.getJsonByPath = function (){
+		Gallery.getJsonByPath = function (){
 			this.storage.images.forEach(function(element){
 				element.toJSON = function() {
 					if(this.path !== ""){
@@ -101,14 +101,13 @@
 			return JSON.stringify(this.storage);
 		};
 		/*6*/
-		galleryObj.verification = function (){
+		Gallery.verification = function (){
 			return this.storage.images.every(function(element){
 				return element.description !== "";
 			});
 		};
 
-		return galleryObj;
-
+		return Gallery;
 	};
 
 }());
