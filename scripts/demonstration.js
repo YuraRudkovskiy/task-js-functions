@@ -2,7 +2,7 @@
 	"use strict"
 
 	var PicGallery = gallery(),
-		PicGallery2 = gallery(),
+		PicGallery2 = Object.create(PicGallery),
 		content = document.getElementById("content"),
 		jsonStr = "{\
 						\"images\": [\
@@ -43,7 +43,7 @@
 						]\
 					}";
 
-	//console.log(PicGallery);
+	console.log(PicGallery2);
 
 	PicGallery.readJsonStr(jsonStr);
 	PicGallery2.readJsonStr(jsonStr2);
