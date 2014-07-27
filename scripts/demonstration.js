@@ -1,8 +1,8 @@
 (function(){
 	"use strict"
 
-	var picGallery = gallery(),
-		picGallery2 = gallery(),
+	var PicGallery = gallery(),
+		PicGallery2 = gallery(),
 		content = document.getElementById("content"),
 		jsonStr = "{\
 						\"images\": [\
@@ -43,13 +43,13 @@
 						]\
 					}";
 
-	//console.log(picGallery);
+	//console.log(PicGallery);
 
-	picGallery.readJsonStr(jsonStr);
-	picGallery2.readJsonStr(jsonStr2);
+	PicGallery.readJsonStr(jsonStr);
+	PicGallery2.readJsonStr(jsonStr2);
 
 	/*
-	picGallery.addImage({
+	PicGallery.addImage({
 							name:"w",
 							path:"",
 							description:"d",
@@ -59,31 +59,31 @@
 	*/
 
 
-	//picGallery.deleteImage(3);
+	//PicGallery.deleteImage(3);
 	/*
-	picGallery.editImage(1, {
+	PicGallery.editImage(1, {
 							name:"1",
 							path:"d",
 							description:"d",
 							date:new Date()
 						});
 	*/
-	//content.appendChild(picGallery.overview());
-	//content.appendChild(picGallery.view(2));
+	//content.appendChild(PicGallery.overview());
+	//content.appendChild(PicGallery.view(2));
 
-	//picGallery.sort("description");
+	//PicGallery.sort("description");
 
-	//picGallery.filter("name", "giraffe");
+	//PicGallery.filter("name", "giraffe");
 
-	//content.appendChild(picGallery.overview());
-	//console.log(picGallery.getJsonByName());
-	//console.log(picGallery.getJsonByPath());
-	//console.log(picGallery.verification());
-	console.log(picGallery.getJsonStr());
+	//content.appendChild(PicGallery.overview());
+	//console.log(PicGallery.getJsonByName());
+	//console.log(PicGallery.getJsonByPath());
+	//console.log(PicGallery.verification());
+	console.log(PicGallery.getJsonStr());
 	console.log("------------------------");
-	console.log(picGallery2.getJsonStr());
+	console.log(PicGallery2.getJsonStr());
 	console.log("******************change context**************************");
-	console.log(picGallery.getJsonStr.call(picGallery2));
+	console.log(PicGallery.getJsonStr.call(PicGallery2));
 	console.log("------------------------");
-	console.log(picGallery2.getJsonStr.call(picGallery));
+	console.log(PicGallery2.getJsonStr.call(PicGallery));
 })();
